@@ -15,7 +15,7 @@
             <br>
             <br>
             Please input your password:<br>
-            <input class="inputPass" type="password" name="password" value="" required>
+            <input class="inputName" type="password" name="password" value="" required>
             <br>
             <br>
             <input class="boton" type="submit" value="Log in">
@@ -31,10 +31,20 @@ include ("funciones.php");
 
     $sql = "SELECT * FROM users";
     $result = $con->query($sql);
-    echo "Se realizo la conexion";
-    var_dump($result->fetch_assoc());
+
 
     if ($result->num_rows > 0) {
-        
+        if(isset($_POST["name"])){
+            $username=$_POST["name"];
+            $password=$_POST["password"];
+            while($user=$result->fetch_assoc()){
+                if($user["Username"]==$username && $user["Password"]==$password){
+                    echo "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+                    break;
+                }else{
+                    echo "Wrong user or pass";
+                }
+            }
+       } 
     }
 ?>
