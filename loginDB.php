@@ -9,13 +9,13 @@
 </head>
 <body>
     <div class="padre">
-        <form action="/ejercicios/formulario.php" method=post> 
+        <form action="" method=post> 
             Please input your username:<br>
-            <input class="inputNumero" type="text" name="name" value="">
+            <input class="inputName" type="text" name="name" value="" required>
             <br>
             <br>
             Please input your password:<br>
-            <input class="inputNumero" type="password" name="password" value="">
+            <input class="inputPass" type="password" name="password" value="" required>
             <br>
             <br>
             <input class="boton" type="submit" value="Log in">
@@ -24,3 +24,17 @@
     
 </body>
 </html>
+
+<?php
+include ("funciones.php");
+    $con=conectar();
+
+    $sql = "SELECT * FROM users";
+    $result = $con->query($sql);
+    echo "Se realizo la conexion";
+    var_dump($result->fetch_assoc());
+
+    if ($result->num_rows > 0) {
+        
+    }
+?>
